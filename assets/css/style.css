@@ -1,0 +1,340 @@
+/* =====================================================================
+   MoneyQuest Kids — Theme
+   A fun, colorful layer on top of Bootstrap 5.
+   ===================================================================== */
+
+:root {
+  --mq-purple: #7c4dff;
+  --mq-purple-dark: #5e35b1;
+  --mq-teal: #00bfa6;
+  --mq-orange: #ffb300;
+  --mq-pink: #ff6b9d;
+  --mq-yellow: #ffd54f;
+  --mq-blue: #2f9bff;
+  --mq-bg: #f6f4ff;
+  --mq-ink: #2d2a4a;
+  --mq-ink-soft: #6b6790;
+  --mq-radius: 20px;
+  --mq-radius-sm: 14px;
+  --mq-shadow: 0 10px 24px rgba(124, 77, 255, 0.12);
+  --mq-shadow-hover: 0 16px 32px rgba(124, 77, 255, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background: var(--mq-bg);
+  color: var(--mq-ink);
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, .mq-heading {
+  font-family: "Baloo 2", "Poppins", sans-serif;
+  font-weight: 700;
+  color: var(--mq-ink);
+}
+
+/* ---------------------------------------------------------------- */
+/* Decorative background blobs                                       */
+/* ---------------------------------------------------------------- */
+
+.mq-blob-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mq-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(0px);
+  opacity: 0.35;
+}
+
+.mq-blob.b1 { width: 320px; height: 320px; background: var(--mq-yellow); top: -80px; left: -80px; }
+.mq-blob.b2 { width: 260px; height: 260px; background: var(--mq-teal); bottom: -60px; right: -60px; }
+.mq-blob.b3 { width: 200px; height: 200px; background: var(--mq-pink); top: 40%; right: -100px; }
+
+/* ---------------------------------------------------------------- */
+/* Navbar                                                             */
+/* ---------------------------------------------------------------- */
+
+.mq-navbar {
+  background: #fff;
+  border-bottom: 3px solid var(--mq-purple);
+  box-shadow: 0 4px 14px rgba(124, 77, 255, 0.08);
+}
+
+.mq-brand {
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--mq-purple-dark) !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mq-pill {
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mq-pill-coins {
+  background: linear-gradient(135deg, #fff3d6, #ffe4a0);
+  color: #a2650a;
+}
+
+.mq-pill-streak {
+  background: linear-gradient(135deg, #ffe1e8, #ffc4d3);
+  color: #b7295a;
+}
+
+.mq-pill-level {
+  background: linear-gradient(135deg, #e6ddff, #d3c2ff);
+  color: var(--mq-purple-dark);
+}
+
+/* ---------------------------------------------------------------- */
+/* Cards                                                              */
+/* ---------------------------------------------------------------- */
+
+.mq-card {
+  background: #fff;
+  border: none;
+  border-radius: var(--mq-radius);
+  box-shadow: var(--mq-shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mq-card.mq-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--mq-shadow-hover);
+}
+
+.mq-card-body {
+  padding: 24px;
+}
+
+.mq-auth-card {
+  max-width: 440px;
+  margin: 8vh auto;
+}
+
+/* ---------------------------------------------------------------- */
+/* Buttons                                                            */
+/* ---------------------------------------------------------------- */
+
+.btn-mq {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 26px;
+  font-weight: 700;
+  font-family: "Baloo 2", sans-serif;
+  letter-spacing: 0.3px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn-mq:active {
+  transform: scale(0.97);
+}
+
+.btn-mq-primary {
+  background: linear-gradient(135deg, var(--mq-purple), var(--mq-purple-dark));
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(124, 77, 255, 0.35);
+}
+
+.btn-mq-primary:hover {
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(124, 77, 255, 0.45);
+}
+
+.btn-mq-teal {
+  background: linear-gradient(135deg, var(--mq-teal), #009688);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(0, 191, 166, 0.35);
+}
+
+.btn-mq-teal:hover { color: #fff; }
+
+.btn-mq-outline {
+  background: #fff;
+  border: 2px solid var(--mq-purple);
+  color: var(--mq-purple-dark);
+}
+
+.btn-mq-outline:hover {
+  background: var(--mq-purple);
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------- */
+/* Progress bars                                                      */
+/* ---------------------------------------------------------------- */
+
+.mq-progress {
+  height: 14px;
+  border-radius: 999px;
+  background: #ece8ff;
+  overflow: hidden;
+}
+
+.mq-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--mq-purple), var(--mq-pink));
+  transition: width 0.5s ease;
+}
+
+/* ---------------------------------------------------------------- */
+/* Module / lesson cards                                              */
+/* ---------------------------------------------------------------- */
+
+.module-card {
+  border-radius: var(--mq-radius-sm);
+  background: #fff;
+  box-shadow: var(--mq-shadow);
+  padding: 18px;
+  text-align: center;
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  position: relative;
+}
+
+.module-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--mq-shadow-hover);
+  color: inherit;
+}
+
+.module-card .module-icon {
+  font-size: 2.4rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.module-card.completed {
+  border: 2px solid var(--mq-teal);
+}
+
+.module-card .module-check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--mq-teal);
+  font-size: 1.2rem;
+}
+
+/* ---------------------------------------------------------------- */
+/* Badges                                                             */
+/* ---------------------------------------------------------------- */
+
+.badge-tile {
+  border-radius: var(--mq-radius-sm);
+  background: #fff;
+  box-shadow: var(--mq-shadow);
+  padding: 18px 10px;
+  text-align: center;
+  transition: transform 0.15s ease;
+}
+
+.badge-tile .badge-icon {
+  font-size: 2.6rem;
+  display: block;
+  margin-bottom: 6px;
+  filter: grayscale(1);
+  opacity: 0.4;
+}
+
+.badge-tile.earned .badge-icon {
+  filter: none;
+  opacity: 1;
+  animation: mq-pop 0.4s ease;
+}
+
+.badge-tile.earned {
+  border: 2px solid var(--mq-orange);
+}
+
+@keyframes mq-pop {
+  0% { transform: scale(0.6); }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* ---------------------------------------------------------------- */
+/* Quiz                                                               */
+/* ---------------------------------------------------------------- */
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 2px solid #e5e0ff;
+  border-radius: var(--mq-radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  background: #fff;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.quiz-option:hover {
+  border-color: var(--mq-purple);
+  background: #f7f4ff;
+}
+
+.quiz-option.selected {
+  border-color: var(--mq-purple);
+  background: #efe9ff;
+}
+
+.quiz-option.correct {
+  border-color: var(--mq-teal);
+  background: #e4faf5;
+}
+
+.quiz-option.incorrect {
+  border-color: #ff6b6b;
+  background: #ffefef;
+}
+
+/* ---------------------------------------------------------------- */
+/* Misc helpers                                                       */
+/* ---------------------------------------------------------------- */
+
+.mq-emoji-lg { font-size: 3rem; }
+.text-mq-purple { color: var(--mq-purple-dark); }
+.text-mq-teal { color: var(--mq-teal); }
+.text-mq-ink-soft { color: var(--mq-ink-soft); }
+.bg-mq-soft { background: #efeaff; }
+
+.mq-fade-in {
+  animation: mq-fade-in 0.35s ease;
+}
+
+@keyframes mq-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mq-locked {
+  opacity: 0.55;
+  filter: grayscale(0.4);
+}

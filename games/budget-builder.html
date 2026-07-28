@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Budget Builder — MoneyQuest Kids</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+<link href="../assets/css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="mq-blob-bg">
+  <div class="mq-blob b1"></div>
+  <div class="mq-blob b2"></div>
+  <div class="mq-blob b3"></div>
+</div>
+
+<nav class="navbar navbar-expand mq-navbar mb-4" id="mqNavbar"></nav>
+
+<div class="container pb-5" style="max-width: 680px;">
+  <a href="../dashboard.html" class="text-mq-purple fw-semibold text-decoration-none">&larr; Back to Dashboard</a>
+
+  <div class="mq-card mq-card-body mt-3 mq-fade-in">
+    <div class="text-center mb-4">
+      <span class="mq-emoji-lg">🧮</span>
+      <h2 class="mb-1">Budget Builder</h2>
+      <p class="text-mq-ink-soft">
+        You get <strong id="allowanceLabel"></strong> a month. Drag the sliders to split it
+        between Needs, Wants, and Savings. Try to get close to the healthy 50 / 30 / 20 rule!
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <div class="d-flex justify-content-between">
+        <label class="fw-semibold">🍎 Needs</label>
+        <span id="needsPct">50%</span>
+      </div>
+      <input type="range" class="form-range" id="needsSlider" min="0" max="100" value="50" />
+      <div class="small text-mq-ink-soft" id="needsAmount"></div>
+    </div>
+
+    <div class="mb-3">
+      <div class="d-flex justify-content-between">
+        <label class="fw-semibold">🎮 Wants</label>
+        <span id="wantsPct">30%</span>
+      </div>
+      <input type="range" class="form-range" id="wantsSlider" min="0" max="100" value="30" />
+      <div class="small text-mq-ink-soft" id="wantsAmount"></div>
+    </div>
+
+    <div class="mb-4">
+      <div class="d-flex justify-content-between">
+        <label class="fw-semibold">🐷 Savings</label>
+        <span id="savingsPct">20%</span>
+      </div>
+      <input type="range" class="form-range" id="savingsSlider" min="0" max="100" value="20" disabled />
+      <div class="small text-mq-ink-soft" id="savingsAmount"></div>
+    </div>
+
+    <div class="alert alert-warning d-none" id="totalWarning">Your three sliders must add up to 100%.</div>
+
+    <div class="text-center">
+      <button id="submitBudgetBtn" class="btn btn-mq btn-mq-primary">Check My Budget ✅</button>
+    </div>
+
+    <div id="resultBox" class="mt-4"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/supabaseClient.js"></script>
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/gamification.js"></script>
+<script src="../assets/js/games/budget-builder.js"></script>
+</body>
+</html>

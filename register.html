@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MoneyQuest Kids — Register</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+<link href="assets/css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="mq-blob-bg">
+  <div class="mq-blob b1"></div>
+  <div class="mq-blob b2"></div>
+  <div class="mq-blob b3"></div>
+</div>
+
+<div class="container">
+  <div class="mq-card mq-auth-card mq-fade-in">
+    <div class="mq-card-body">
+      <div class="text-center mb-4">
+        <div class="mq-emoji-lg">🎒</div>
+        <h1 class="mb-0">Join the Quest!</h1>
+        <p class="text-mq-ink-soft mb-0">Create your student account</p>
+      </div>
+
+      <div id="registerAlert" class="alert d-none" role="alert"></div>
+
+      <form id="registerForm">
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="name">Your Name</label>
+          <input type="text" class="form-control" id="name" required placeholder="Dhanvanth" />
+        </div>
+        <div class="row">
+          <div class="col-6 mb-3">
+            <label class="form-label fw-semibold" for="studentClass">Class</label>
+            <input type="text" class="form-control" id="studentClass" placeholder="8th Grade" />
+          </div>
+          <div class="col-6 mb-3">
+            <label class="form-label fw-semibold" for="school">School</label>
+            <input type="text" class="form-control" id="school" placeholder="Your school" />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="email">Email</label>
+          <input type="email" class="form-control" id="email" required placeholder="you@example.com" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="password">Password</label>
+          <input type="password" class="form-control" id="password" required minlength="6" placeholder="At least 6 characters" />
+        </div>
+        <button type="submit" class="btn btn-mq btn-mq-primary w-100 mt-2" id="registerBtn">
+          Create My Account ✨
+        </button>
+      </form>
+
+      <p class="text-center mt-4 mb-0">
+        Already playing? <a href="index.html" class="text-mq-purple fw-semibold">Login</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabaseClient.js"></script>
+<script>
+  const form = document.getElementById("registerForm");
+  const btn = document.getElementById("registerBtn");
+  const alertEl = document.getElementById("registerAlert");
+
+  function showError(msg) {
+    alertEl.className = "alert alert-danger mq-fade-in";
+    alertEl.textContent = msg;
+    alertEl.classList.remove("d-none");
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    alertEl.classList.add("d-none");
+    btn.disabled = true;
+    btn.textContent = "Creating account...";
+
+    const name = document.getElementById("name").value.trim();
+    const studentClass = document.getElementById("studentClass").value.trim();
+    const school = document.getElementById("school").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    // name / class / school ride along as auth metadata — a database
+    // trigger (see supabase/schema.sql) copies them into the profiles table.
+    const { data, error } = await supabaseClient.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { name, class: studentClass, school },
+      },
+    });
+
+    if (error) {
+      showError(error.message);
+      btn.disabled = false;
+      btn.textContent = "Create My Account ✨";
+      return;
+    }
+
+    if (data.session) {
+      // Email confirmation is OFF in this Supabase project — go straight in.
+      window.location.href = "dashboard.html";
+    } else {
+      alertEl.className = "alert alert-success mq-fade-in";
+      alertEl.textContent = "Account created! Check your email to confirm, then log in.";
+      alertEl.classList.remove("d-none");
+      btn.disabled = false;
+      btn.textContent = "Create My Account ✨";
+    }
+  });
+</script>
+</body>
+</html>
