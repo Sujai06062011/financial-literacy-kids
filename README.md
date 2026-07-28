@@ -1,5 +1,7 @@
 # 💰 MoneyQuest Kids
 
+Live site: https://financial-literacy-kids.vercel.app
+
 **Learn • Play • Save • Grow**
 
 A colorful, gamified financial-literacy website for students — built with plain
