@@ -4,6 +4,6 @@
 //   Supabase Dashboard → Project Settings → API
 // =====================================================================
 
-const SUPABASE_URL = "https://jsbqplxzxrvqiltduvrx.supabase.co";
+const SUPABASE_URL = "https://ugcataalvyhtovtqvfvw.supabase.co";
 const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzYnFwbHh6eHJ2cWlsdGR1dnJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNTE1MjgsImV4cCI6MjEwMDgyNzUyOH0.4iA01lvl4HvklFKtFIeeUjafBmFa_ywza6ftf6l3KO8";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVnY2F0YWFsdnlodG92dHF2ZnZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNjQzMTEsImV4cCI6MjEwNzY0MDMxMX0.jsKcJUr8_SRtmRDuaQTTb-N8yvRUURYUypg4ct4Eusc";
