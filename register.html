@@ -109,16 +109,19 @@
       return;
     }
 
+    // Signup can open a session immediately. Sign out so the student
+    // must use the login page with the email and password they just chose.
     if (data.session) {
-      // Email confirmation is OFF in this Supabase project — go straight in.
-      window.location.href = "dashboard.html";
-    } else {
-      alertEl.className = "alert alert-success mq-fade-in";
-      alertEl.textContent = "Account created! Check your email to confirm, then log in.";
-      alertEl.classList.remove("d-none");
-      btn.disabled = false;
-      btn.textContent = "Create My Account ✨";
+      await supabaseClient.auth.signOut();
     }
+
+    form.reset();
+    alertEl.className = "alert alert-success mq-fade-in";
+    alertEl.textContent =
+      "Account created successfully. Please use the login page to log in with your email and password.";
+    alertEl.classList.remove("d-none");
+    btn.disabled = false;
+    btn.textContent = "Create My Account ✨";
   });
 </script>
 </body>
